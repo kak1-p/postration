@@ -1,24 +1,68 @@
-# README
+## Users
+|Column|Type|Options|
+| name               | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| profile            | text |
+### Association
+- has_many :posts
+- has_many :comments
+- has_many :groups_users
+- has_many :group_rooms
+- has_many :messages
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Posts
+|Column|Type|Options|
+| detail  | text | ----------- |
+| image   | active_hash | ----------- |
+| user    | references | foreign_key: true |
+### Association
+- has_many :comments
+- belongs_to :user
+- has_one :image
 
-* Ruby version
 
-* System dependencies
+## Comments
+|Column|Type|Options|
+| comment | text | null: false |
+| user    | references | foreign_key: true |
+| post    | references | foreign_key: true |
+### Association
+- belongs_to :user
+- belongs_to :post
 
-* Configuration
 
-* Database creation
+## Groups
+|Column|Type|Options|
+| group_name | string | null: false |
+### Association
+- has_many :groups_users
+- has_many :group_rooms
 
-* Database initialization
+## Groups_Users
+|Column|Type|Options|
+| user    | references | foreign_key: true |
+| group    | references | foreign_key: true |
+### Association
+- belongs_to :user
+- belongs_to :group
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Group_rooms
+|Column|Type|Options|
+| content | text | null: false|
+| user    | references | foreign_key: true |
+| group   | references | foreign_key: true |
+### Association
+- belongs_to :user
+- belongs_to :group
 
-* Deployment instructions
 
-* ...
+## messages
+|Column|Type|Options|
+| message | text | null: false |
+| user            | references | foreign_key: true |
+| receive_user    | references | foreign_key: true |
+### Association
+- belongs_to :user
