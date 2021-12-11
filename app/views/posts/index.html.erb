@@ -1,1 +1,11 @@
-<p>トップページ</p>
+<% @posts.each do |post| %>
+  <div class='post-img-content'>
+    <%= image_tag(post.image, class: "post-img") %>
+  </div>
+  <div class='post-detail'>
+    <%= post.detail %>
+  </div>
+  <div class='post-user-name'>
+    <p>投稿者 <%= post.user.name%></p>
+  </div>
+<% end %>

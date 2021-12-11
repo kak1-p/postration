@@ -1,0 +1,6 @@
+<h3>投稿する</h3>
+    <%= form_with(model: @post, local: true) do |f| %>
+      <%= f.file_field :image, size: '300x300' %>
+      <%= f.text_area :detail, placeholder: "text" %>
+      <%= f.submit "POST" %>
+    <% end %>
