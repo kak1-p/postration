@@ -1,0 +1,7 @@
+<h3>編集する</h3>
+    <%= form_with(model: @post, local: true) do |f| %>
+      <%= f.file_field :image, size: '300x300' %>
+      <%= f.text_area :detail, placeholder: "text" %>
+      <%= f.submit "change" %>
+      <%=link_to 'back', root_path, class:"back-btn" %>
+    <% end %>

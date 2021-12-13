@@ -1,6 +1,20 @@
 <% @posts.each do |post| %>
   <div class='post-img-content'>
-    <%= image_tag(post.image, class: "post-img") %>
+    <%= image_tag(post.image, class: "post-img", size: '300x300')%>
+    <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+        <ul class="more_list">
+          <li>
+            <%= link_to 'show', post_path(post.id), method: :get %>
+          </li>
+          <li>
+            <%= link_to 'edit', edit_post_path(post.id), method: :get %>
+          </li>
+          <li>
+            <%= link_to 'delete', post_path(post.id), method: :delete %>
+          </li>
+        </ul>
+      </div>
   </div>
   <div class='post-detail'>
     <%= post.detail %>
