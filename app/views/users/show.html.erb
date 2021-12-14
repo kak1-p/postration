@@ -1,9 +1,10 @@
+
 <div class="contents row">
-  <p><%= @name %>さんの投稿一覧</p>
+  <p><%= @user.name %>さんの投稿一覧</p>
   <% @posts.each do |post| %>
     <div class='post-img-content'>
     <%= image_tag(post.image, class: "post-img", size: '300x300')%>
-    <div class="more">
+      <div class="more">
         <span><%= image_tag 'arrow_top.png' %></span>
         <ul class="more_list">
           <li>
@@ -22,3 +23,4 @@
       <%= post.detail %>
     </div>
   <% end %>
+</div>

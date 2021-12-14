@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :show]
+  before_action :set_post, only: [:destroy, :edit, :show]
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -35,6 +35,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user)
   end
 
   private
