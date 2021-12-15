@@ -1,6 +1,19 @@
 
+<% unless @user.id == current_user.id %>
+  <% if @haveRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">メッセージ</a>
+  <% else %>
+    <%= form_with url:"/rooms", local: true do |f| %>
+      <%= fields_for @RoomUser do |r| %>
+        <%= r.hidden_field :user_id, value: @user.id %>
+      <% end %>
+      <%= f.submit "メッセージ" %>
+    <% end %>
+  <% end %>
+<% end %>
+
 <div class="contents row">
-  <p><%= @user.name %>さんの投稿一覧</p>
+  <p><%= @name %>さんの投稿一覧</p>
   <% @posts.each do |post| %>
     <div class='post-img-content'>
     <%= image_tag(post.image, class: "post-img", size: '300x300')%>

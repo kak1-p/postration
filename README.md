@@ -40,16 +40,8 @@
 - has_many :groups_users
 - has_many :group_rooms
 
-## Groups_Users
-|Column|Type|Options|
-| user    | references | foreign_key: true |
-| group    | references | foreign_key: true |
-### Association
-- belongs_to :user
-- belongs_to :group
 
-
-## Group_rooms
+## Group_post
 |Column|Type|Options|
 | content | text | null: false|
 | user    | references | foreign_key: true |
@@ -59,10 +51,18 @@
 - belongs_to :group
 
 
+## Rooms
+|Column|Type|Options|
+| user    | references | foreign_key: true |
+### Association
+- has_many :messages
+
+
 ## messages
 |Column|Type|Options|
 | message | text | null: false |
-| user            | references | foreign_key: true |
-| receive_user    | references | foreign_key: true |
+| user    | references | foreign_key: true |
+| room    | references | foreign_key: true |
 ### Association
 - belongs_to :user
+- belongs_to :room
