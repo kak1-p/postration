@@ -41,7 +41,7 @@
 - has_many :group_rooms
 
 
-## Group_post
+## Grouppost
 |Column|Type|Options|
 | content | text | null: false|
 | user    | references | foreign_key: true |

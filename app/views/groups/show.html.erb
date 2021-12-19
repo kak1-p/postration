@@ -1,0 +1,29 @@
+<% @group.users.each do |menber| %>
+ <%= menber.name %><br>
+<% end %>
+<div class="chats">
+
+    <div class="chat">
+      <% if @groupposts.present? %>
+        <% @groupposts.each do |g| %>
+          <div class="chat-box">
+            <div class="chat-text">
+              <%= g.content %>
+              <%= g.created_at.strftime("%Y-%m-%d %H:%M") %>
+              <%= g.user.name%>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>メッセージはまだありません</p>
+      <% end %>
+    </div>
+
+    <div class="posts">
+      <%= form_with model: [@group, @grouppost], local: true do |f| %>
+        <%= f.text_field :content, placeholder: "メッセージを入力してください" %>
+        <%= f.hidden_field :group_id, value: @group.id %>
+        <%= f.submit "SEND" %>
+      <% end %>
+    </div>
+  </div>

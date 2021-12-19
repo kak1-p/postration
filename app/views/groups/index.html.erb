@@ -1,0 +1,7 @@
+<%= link_to 'コミュニティー作成', new_group_path %>
+
+<% @groups.each do |group| %>
+  <%= link_to group_path(group.id) do %>
+    <p><%= group.group_name %></p>
+  <% end %>
+<% end %>

@@ -11,6 +11,9 @@
     <% end %>
   <% end %>
 <% end %>
+<% if @user.id == current_user.id %>
+  <%= link_to 'コミュニティー', groups_path %>
+<% end %>
 
 <div class="contents row">
   <p><%= @name %>さんの投稿一覧</p>

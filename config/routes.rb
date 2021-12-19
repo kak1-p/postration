@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
   resources :users, only: :show
-  resources :rooms, only: [:create, :show]
-  resources :messages, only: :create
+  resources :rooms, only: [:create, :show] do
+    resources :messages, only: :create
+  end
+  resources :groups, only: [:index, :new, :create, :show] do
+    resources :groupposts, only: :create
+  end
+
 end
