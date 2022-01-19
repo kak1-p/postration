@@ -1,5 +1,5 @@
-<div class="contents row">
-  <div class='post-img-content'>
+<div class="content-row">
+  <div class="container">
     <%= image_tag(@post.image, class: "post-img", size: '600x600')%>
     <% if user_signed_in? && current_user.id == @post.user.id %>
       <div class="more">

@@ -1,31 +1,38 @@
-<% @posts.each do |post| %>
-  <div class='post-img-content'>
-    <%= image_tag(post.image, class: "post-img", size: '300x300')%>
-    <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
-        <ul class="more_list">
-          <li>
-            <%= link_to 'show', post_path(post.id), method: :get %>
-          </li>
-          <% if user_signed_in? && current_user.id == post.user_id %>
-          <li>
-            <%= link_to 'edit', edit_post_path(post.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to 'delete', post_path(post.id), method: :delete %>
-          </li>
-          <% end %>
-        </ul>
+<div class="content-row">
+  <div class="container">
+    <% @posts.each do |post| %>
+    <span class="name">
+        <a href="/users/<%= post.user.id %>">
+          <span>投稿者</span><%= post.user.name %>
+        </a>
+    </span>
+      <div class='post-img-content'>
+        <%= image_tag(post.image, class: "post-img")%>
+        <div class="more" id="lists">
+          <%# <%= image_tag 'arrow_top.png' %>
+          <ul class="more_list" id="pull-down">
+            <li>
+              <%= link_to 'show', post_path(post.id), method: :get %>
+            </li>
+            <% if user_signed_in? && current_user.id == post.user_id %>
+            <li>
+              <%= link_to 'edit', edit_post_path(post.id), method: :get %>
+            </li>
+            <li>
+              <%= link_to 'delete', post_path(post.id), method: :delete %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
+      <div class="container">
+      <p><%= post.detail %></p>
+      </div>
+      
+    <% end %>
   </div>
-  <p><%= post.detail %></p>
-  <span class="name">
-    <a href="/users/<%= post.user.id %>">
-      <span>投稿者</span><%= post.user.name %>
-    </a>
-  </span>
-<% end %>
+</div>
 
-<%= link_to("/tweets/new", class: 'purchase-btn') do %>
+<%= link_to("/posts/new", class: 'purchase-btn') do %>
   <%= image_tag 'photo_icon.png' , size: '100x100' ,class: "dli-plus" %>
 <% end %>
