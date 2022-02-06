@@ -1,9 +1,11 @@
 <div class='contents row'>
-<% @group.users.each do |menber| %>
- <%= menber.name %><br>
-<% end %>
-<div class="chats">
-
+  <div class="menbers">
+    <p>menbers:</p>
+    <% @group.users.each do |g| %>
+      <strong><%=link_to g.name %></strong>
+    <% end %>
+  </div>
+  <div class="chats">
     <div class="chat">
       <% if @groupposts.present? %>
         <% @groupposts.each do |g| %>

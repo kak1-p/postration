@@ -1,7 +1,13 @@
-<%= link_to 'コミュニティー作成', new_group_path %>
-
-<% @groups.each do |group| %>
-  <%= link_to group_path(group.id) do %>
-    <p><%= group.group_name %></p>
-  <% end %>
-<% end %>
+<div class='contents row'>
+  <div class="form-group">
+    <%= link_to 'コミュニティー作成', new_group_path %>
+  </div>
+<p>コミュニティー名</p>
+  <div class="menbers">
+    <% @groups.each do |group| %>
+      <%= link_to group_path(group.id) do %>
+        <p><%= group.group_name %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,19 +1,19 @@
-
-<% unless @user.id == current_user.id %>
-  <% if @haveRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">メッセージ</a>
+<div class="message">
+  <% if @user.id == current_user.id %>
+    <%= link_to 'コミュニティー', groups_path %>
   <% else %>
-    <%= form_with url:"/rooms", local: true do |f| %>
-      <%= fields_for @RoomUser do |r| %>
-        <%= r.hidden_field :user_id, value: @user.id %>
+    <% if @isRoom == true %>
+      <p><a href="/rooms/<%= @roomId %>">メッセージ</a>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: @user.id %>
+        <% end %>
+        <%= f.submit "メッセージ" %>
       <% end %>
-      <%= f.submit "メッセージ" %>
     <% end %>
   <% end %>
-<% end %>
-<% if @user.id == current_user.id %>
-  <%= link_to 'コミュニティー', groups_path %>
-<% end %>
+</div>
 
 <div class="contents row">
   <p><%= @name %>さんの投稿一覧</p>

@@ -1,13 +1,7 @@
 <div class="chat-room">
   <h1>メッセージ</h1>
-  <% @RoomUsers.each do |r| %>
-    <div class="user-name">
-    <strong>
-      <a class="room-user-link" href="/users/<%= r.user.id %>">
-        <%= r.user.name %>さん
-      </a>
-    </strong>
-    </div>
+  <% @entries.each do |e| %>
+    <strong><a href="/users/<%= e.user.id%>"><%= e.user.name%></a></strong>
   <% end %>
 
   <hr>
@@ -30,7 +24,7 @@
     </div>
 
     <div class="posts">
-      <%= form_with model: [@room, @message], local: true do |f| %>
+      <%= form_for @message do |f| %>
         <%= f.text_field :message, placeholder: "メッセージを入力してください" %>
         <%= f.hidden_field :room_id, value: @room.id %>
         <%= f.submit "SEND" %>

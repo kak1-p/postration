@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:destroy, :edit, :show]
+  before_action :set_post, only: [:edit, :show, :update]
   before_action :move_to_index, except: [:index, :show]
 
   def index
@@ -20,6 +20,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
   end
 

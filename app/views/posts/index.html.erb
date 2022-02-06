@@ -9,7 +9,7 @@
       <div class='post-img-content'>
         <%= image_tag(post.image, class: "post-img")%>
         <div class="more" id="lists">
-          <%# <%= image_tag 'arrow_top.png' %>
+          <span><%= image_tag 'arrow_top.png'%></span>
           <ul class="more_list" id="pull-down">
             <li>
               <%= link_to 'show', post_path(post.id), method: :get %>
@@ -28,7 +28,6 @@
       <div class="container">
       <p><%= post.detail %></p>
       </div>
-      
     <% end %>
   </div>
 </div>
