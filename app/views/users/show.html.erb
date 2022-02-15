@@ -19,21 +19,26 @@
   <div class="container">
     <% @posts.each do |post| %>
       <div class='post-img-content'>
-      <%= image_tag(post.image, class: "post-img")%>
-        <div class="more">
-          <span><%= image_tag 'arrow_top.png' %></span>
-          <ul class="more_list">
-            <li>
-              <%= link_to 'show', post_path(post.id), method: :get %>
-            </li>
-            <li>
-              <%= link_to 'edit', edit_post_path(post.id), method: :get %>
-            </li>
-            <li>
-              <%= link_to 'delete', post_path(post.id), method: :delete %>
-            </li>
-          </ul>
-        </div>
+        <%= image_tag(post.image, class: "post-img")%>
+          <div class="more">
+            <div class="toggle_btn" id="toggle_btn">
+              <span></span>
+              <span></span>
+            </div>
+            <ul class="more-list" id="more-list">
+              <li>
+                <%= link_to 'show', post_path(post.id), method: :get %>
+              </li>
+                <% if user_signed_in? && current_user.id == post.user_id %>
+                  <li>
+                    <%= link_to 'edit', edit_post_path(post.id), method: :get %>
+                  </li>
+                  <li>
+                    <%= link_to 'delete', post_path(post.id), method: :delete %>
+                  </li>
+                <% end %>
+            </ul>
+          </div>
       </div>
       <div class="container">
         <%= post.detail %>

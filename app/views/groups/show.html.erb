@@ -2,7 +2,7 @@
   <div class="menbers">
     <p>menbers:</p>
     <% @group.users.each do |g| %>
-      <strong><%=link_to g.name %>さん</strong>
+      <strong><%= g.name %>さん</strong>
     <% end %>
   </div>
   <div class="chats">
