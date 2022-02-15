@@ -12,20 +12,26 @@
 
   <body>
     <header class="header">
-      <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">PostRaTion</a></h1>
+      <div class="header-bar">
+        <h1 class="title"><a href="/">PostRaTion</a></h1>
           <% if user_signed_in? %>
-            <div class="user_nav grid-6">
-              <span><%= current_user.name %>
-              <ul class="user__info">
-                <li>
-                  <%= link_to "マイページ", "/users/#{current_user.id}" %>
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                </li>
-              </ul>
+            <div class="name">
+              <span>
+                <div class="user-name" id="lists">
+                  <%= current_user.name %>
+                </div>
+                <ul class="more-list" id="pull-down">
+                  <li>
+                    <%= link_to "マイページ", "/users/#{current_user.id}" %>
+                  </li>
+                  <li>
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  </li>
+                </ul>
+              </span>
             </div>
           <% else %>
-          <div class="grid-6">
+          <div class="user-create">
             <%= link_to "ログイン", new_user_session_path, class: "post" %>
             <%= link_to "新規登録", new_user_registration_path, class: "post" %>
           </div>

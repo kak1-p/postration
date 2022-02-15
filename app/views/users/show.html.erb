@@ -1,21 +1,20 @@
-<div class="message">
-  <% if @user.id == current_user.id %>
-    <%= link_to 'コミュニティー', groups_path %>
-  <% else %>
-    <% if @isRoom == true %>
-      <p><a href="/rooms/<%= @roomId %>">メッセージ</a>
-    <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, value: @user.id %>
+<div class="content-row">
+  <div class="form-group">
+      <% if @user.id == current_user.id %>
+        <p><a href="/groups#index" id="form">コミュニティー</a></p>
+      <% else %>
+      <% if @isRoom == true %>
+        <p><a href="/rooms/<%= @roomId %>" id="form">メッセージ</a></p>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.submit "メッセージ" %>
         <% end %>
-        <%= f.submit "メッセージ" %>
       <% end %>
     <% end %>
-  <% end %>
-</div>
-
-<div class="contents row">
+  </div>
   <p><%= @name %>さんの投稿一覧</p>
   <div class="container">
     <% @posts.each do |post| %>

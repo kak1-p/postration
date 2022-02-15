@@ -351,3 +351,183 @@ template {
 }
 
 
+
+html {
+  height: 100%;
+  background-color: lightyellow;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+body {
+  line-height: 1.57;
+  letter-spacing: 0.15em;
+  font-size: 16px;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #f08080;
+}
+
+header{
+  background-color: white;
+  position: fixed;
+  z-index: 10;
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid lightslategrey;
+}
+.header-bar{
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+}
+.content-row{
+  background-color: lightyellow;
+  padding: 140px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  margin: auto 30px;
+}
+.container{
+  background-color: white;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.22);
+  padding: 0.5rem 1em;
+}
+.post-name{
+  margin: 50px 20px 10px 20px;
+}
+form input,
+form textarea{
+  width: 100%;
+  margin: 5px 0 15px;
+  padding: 10px;
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+}
+form input[type="submit"], #form{
+  margin: 30px 0;
+  padding: 5px;
+  background-color: lightslategray;
+  border-radius: 20px;
+  color: #fff;
+  border: 0;
+  font-size: 18px;
+}
+form input[type="submit"]:hover, #form:hover{
+  background-color: lightcoral;
+}
+.menbers{
+  margin-bottom: 30px;
+}
+.chats{
+  background-color: white;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.22);
+  padding: 0.5rem 1em;
+}
+.posts{
+  width: 90%;
+}
+.chat{
+  padding-bottom: 40px;
+}
+.form-group{
+  position: absolute;
+  top: 120px;
+  left: 40px;
+}
+.group-create{
+  margin: 30px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid lightslategrey;
+  border-radius: 5px;
+  color: #fff;
+}
+.group-name{
+  border-bottom: 5px solid lightslategrey;
+}
+.comment{
+  margin: 20px 0 5px 0;
+}
+footer{
+  text-align: center;
+  padding-bottom: 5px;
+}
+.post-img-content{
+  position: relative;
+}
+.more{
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.more-list{
+  background-color: #fff;
+  border: 1px solid lightslategrey;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  display: none;
+  position: absolute;
+  right: 10px;
+  width: 100px;
+}
+.name{
+  position: relative;
+}
+.user-name{
+  color: black;
+}
+.user-name:hover{
+  color: #f08080;
+}
+
+.toggle_btn{
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  z-index: 5;
+}
+.toggle_btn span{
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 4px;
+}
+
+/*
+1本目の線の位置を設定
+*/
+.toggle_btn span:nth-child(1){
+  top: 10px;
+}
+
+/*
+2本目の線の位置を設定
+*/
+.toggle_btn span:nth-child(2){
+  top: 20px;
+}

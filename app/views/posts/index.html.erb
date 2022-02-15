@@ -1,32 +1,37 @@
 <div class="content-row">
   <div class="container">
     <% @posts.each do |post| %>
-    <span class="name">
-        <a href="/users/<%= post.user.id %>">
-          <span>投稿者</span><%= post.user.name %>
-        </a>
-    </span>
-      <div class='post-img-content'>
-        <%= image_tag(post.image, class: "post-img")%>
-        <div class="more" id="lists">
-          <span><%= image_tag 'arrow_top.png'%></span>
-          <ul class="more_list" id="pull-down">
-            <li>
-              <%= link_to 'show', post_path(post.id), method: :get %>
-            </li>
-            <% if user_signed_in? && current_user.id == post.user_id %>
-            <li>
-              <%= link_to 'edit', edit_post_path(post.id), method: :get %>
-            </li>
-            <li>
-              <%= link_to 'delete', post_path(post.id), method: :delete %>
-            </li>
-            <% end %>
-          </ul>
+    <div class="post-name">
+      <span>
+          <a href="/users/<%= post.user.id %>">
+            <span>投稿者 </span><%= post.user.name %>
+          </a>
+      </span>
+    </div>
+    <div class='post-img-content'>
+      <%= image_tag(post.image, class: "post-img")%>
+      <div class="more">
+        <div class="toggle_btn" id="toggle_btn">
+          <span></span>
+          <span></span>
         </div>
+        <ul class="more-list" id="more-list">
+          <li>
+            <%= link_to 'show', post_path(post.id), method: :get %>
+          </li>
+            <% if user_signed_in? && current_user.id == post.user_id %>
+              <li>
+                <%= link_to 'edit', edit_post_path(post.id), method: :get %>
+              </li>
+              <li>
+                <%= link_to 'delete', post_path(post.id), method: :delete %>
+              </li>
+            <% end %>
+        </ul>
       </div>
+    </div>
       <div class="container">
-      <p><%= post.detail %></p>
+        <p><%= post.detail %></p>
       </div>
     <% end %>
   </div>
